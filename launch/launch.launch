@@ -1,0 +1,43 @@
+<launch>
+    <param name="/use_sim_time" value="true"/>
+
+    <node pkg="second_project" type="odom_to_tf" name="odom_to_tf" output="screen"/>
+    <node pkg="tf" type="static_transform_publisher" name="sensor" args="0 0 0.4 0 0 0 1 base_link base_laser_link 100" />
+
+    <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen">
+        <remap from="scan" to="ugv/rslidar_points_tolaser" />
+        <param name="xmax" value="5"/>
+        <param name="ymax" value="5"/>
+        <param name="xmin" value="-5"/>
+        <param name="ymin" value="-5"/>
+        <param name="delta" value="0.05"/>
+    </node>
+
+    <!-- run pointcloud_to_laserscan node -->
+    <!-- Video tutorial: https://www.youtube.com/watch?v=IFNikTHN1pk&ab_channel=TheConstruct --> 
+    <!-- Useful link: https://answers.ros.org/question/37312/problem-running-pointcloud_to_laserscan-launch-file/) -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <remap from="cloud_in" to="/ugv/rslidar_points"/>
+        <remap from="scan" to="/ugv/rslidar_points_tolaser"/>
+        <rosparam>
+            target_frame: rslidar 
+            transform_tolerance: 0.01
+            min_height: 0.0
+            max_height: 1.0
+
+            angle_min: -3.14 # -M_PI
+            angle_max: 3.14 # M_PI
+            angle_increment: 0.0087 # M_PI/360.0
+            scan_time: 0.3333
+            range_min: 0.45
+            range_max: 10.0
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 0
+        </rosparam>
+    </node>
+</launch>
