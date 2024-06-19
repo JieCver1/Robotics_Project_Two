@@ -40,4 +40,7 @@
             concurrency_level: 0
         </rosparam>
     </node>
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-f odom -d $(find second_project)/cfg/rviz_config.rviz">
+    </node>
 </launch>
