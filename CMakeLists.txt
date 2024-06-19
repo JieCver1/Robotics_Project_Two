@@ -10,5 +10,5 @@ catkin_package()
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(odom_to_tf src/odom_to_tf.cpp)
-target_link_libraries(odom_to_tf ${catkin_LIBRARIES})
+add_executable(ugv_odom_to_tf src/ugv_odom_to_tf.cpp)
+target_link_libraries(ugv_odom_to_tf ${catkin_LIBRARIES})

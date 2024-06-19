@@ -1,7 +1,7 @@
 <launch>
     <param name="/use_sim_time" value="true"/>
 
-    <node pkg="second_project" type="odom_to_tf" name="odom_to_tf" output="screen"/>
+    <node pkg="second_project" type="ugv_odom_to_tf" name="ugv_odom_to_tf" output="screen"/>
     <node pkg="tf" type="static_transform_publisher" name="sensor" args="0 0 0.4 0 0 0 1 base_link rslidar 100" />
 
     <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen">
