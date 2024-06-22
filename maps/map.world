@@ -32,13 +32,13 @@ floorplan
   name "map"
   bitmap "map_with_border.pgm"
   size [ 33.7 32.1 2.0 ]
-  pose [ 16.85 16.05 0.0 0.0 ]
+  pose [ 0.0 0.0 0.0 0.0 ]
 )
 
 # throw in a robot
 robot
 (
-  pose [ 4.0 16.0 0.0 0.0 ]
+  pose [ -12.0 1.0 0.0 0.0 ]
   name "robot"
   color "black"
 )
