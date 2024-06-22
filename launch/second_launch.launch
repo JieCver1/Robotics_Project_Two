@@ -41,6 +41,10 @@ kobuki_hexagons_kinect kobuki_hexagons_r200 roomba_circles_asus_xtion_pro roomba
     <param name="clearing_rotation_allowed" value="true"/>
   </node>
 
+  <!--goal publisher node -->
+  <node name="goal_publisher" pkg="second_project" type="goal_publisher" output="screen">
+  <param name="log_level" value="debug"/>  <!-- Aggiungi questa linea -->
+  </node>
 
   <!--  ****** Maps *****  -->
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
