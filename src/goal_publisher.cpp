@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
     ros::NodeHandle nh("~"); //create a node handle
 
     std::string filename; //create a string to store the file path
-    nh.param<std::string>("csv_path", filename, "src/waypoints.csv"); //get the file path from the parameter server
+    nh.getParam("csv_path", filename); //get the file path from the launch file
 
 
     std::vector<Goal> goals = readGoals(filename); //read the goals from the file

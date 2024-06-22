@@ -43,7 +43,7 @@ kobuki_hexagons_kinect kobuki_hexagons_r200 roomba_circles_asus_xtion_pro roomba
 
   <!--goal publisher node -->
   <node name="goal_publisher" pkg="second_project" type="goal_publisher" output="screen">
-  <param name="log_level" value="debug"/>  <!-- Aggiungi questa linea -->
+  <param name="csv_path" value="$(find second_project)/src/waypoints.csv"/>
   </node>
 
   <!--  ****** Maps *****  -->
