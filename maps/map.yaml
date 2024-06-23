@@ -1,4 +1,4 @@
-image: map.pgm
+image: map_with_border.pgm
 resolution: 0.050000
 origin: [-16.850000, -16.050000, 0.000000, 0.000000]
 negate: 0
